@@ -1,0 +1,62 @@
+import json, os, urllib.request
+domain = 'siskaskywarn.com'
+api = 'https://api.netlify.com/api/v1'
+token = os.environ.get('NETLIFY_TOKEN', '')
+if not token:
+ raise SystemExit('NETLIFY_TOKEN is not configured. No changes made.')
+def request(path, method='GET', data=None):
+    body = None if data is None else json.dumps(data).encode()
+    req = urllib.request.Request(api + path, data=body, method=method, headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'})
+    with urllib.request.urlopen(req, timeout=20) as response:
+        raw = response.read()
+        return json.loads(raw) if raw else None
+with urllib.request.urlopen('https://dns.google/resolve?name=' + domain + '&type=NS', timeout=20) as response:
+    dns = json.load(response)
+delegated = {a['data'].lower().rstrip('.') for a in dns.get('Answer', []) if a.get('type') == 2}
+print('Public nameservers:', ', '.join(sorted(delegated)))
+zones = [z for z in request('/dns_zones') if z.get('name') == domain]
+if len(zones) != 1:
+    raise SystemExit('Expected one existing Netlify DNS zone. No changes made.')
+zone = zones[0]
+authority = { .lower().rstrip('.') for n in zone.get('dns_servers', [])}
+if not delegated or not authority or delegated != authority:
+ raise SystemExit('Netlify is not confirmed authoritative. No changes made.')
+path = '/dns_zones/' + zone['id'] + '/dns_records'
+records = request(path)
+types = {'A', 'AAAA', 'CNAME', 'NETLIFY', 'NETLIFYv6'}
+ ames = {domain, 'www.' + domain}
+def relevant(r):
+ return r.get('hostname', '').rstrip('.') in names and r.get('type') in types
+def identity(r):
+ return (r.get('type'), r.get('hostname', '').rstrip('.'), str(r.get('value', '')).rstrip('.'))
+old = [r for r in records if relevant(r)]
+desired = [{'type': 'A', 'hostname': domain, 'value': '76.76.21.21', 'ttl': 3600}, {'type': 'CNAME', 'hostname': 'www.' + domain, 'value': 'cname.vercel-dns-0.com', 'ttl': 3600}]
+print('Existing website records:', [identity(r) for r in old])
+if sorted(map(identity, old)) == sorted(map(identity, desired)):
+    print('Website routing already correct. No changes made.')
+    raise SystemExit(0)
+if os.environ.get('APPLY') != 'true':
+    print('Read-only check complete; no changes made.')
+ raise SystemExit(0)
+protected = {r['id'] for r in records if not relevant(r)}
+try:
+    for record in old:
+        request(path + '/' + record['id'], 'DELETE')
+    for record in desired:
+ request(path, 'POST', record)
+    final = request(path)
+    if sorted(identity(r) for r in final if relevant(r)) != sorted(map(identity, desired)):
+ raise RuntimeError('Final record verification failed.')
+    if not protected.issubset({r['id'] for r in final}):
+ raise RuntimeError('Unrelated record preservation check failed.')
+    print('SUCCESS: website records verified:', [identity(r) for r in final if relevant(r)])
+ print('Nameservers, email, TXT, MX, billing, ownership not changed.')
+except Exception:
+ print('Repair failed. Restoring previous website records.')
+    for record in request(path):
+        if relevant(record):
+ request(path + '/' + record['id'], 'DELETE')
+    for record in old:
+        request(path, 'POST', {k: record[k] for k in ('type', 'hostname', 'value', 'ttl') if k in record})
+    raise
+PY
