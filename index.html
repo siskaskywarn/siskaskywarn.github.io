@@ -1,0 +1,332 @@
+!DOCTYPE html>
+html lang="en">
+head>
+  meta charset="UTF-8">
+  meta name="viewport" content="width=device-width, initial-scale=1.0">
+  meta name="robots" content="index, follow">
+  meta name="description" content="Siska Skywarn News - Your hyperlocal source for weather, storms, road safety, and community news in Fuquay-Varina and Midtown Rows. Fast, reliable, on the ground.">
+  link rel="canonical" href="https://siskaskywarn.com/">
+  title>Siska Skywarn Weather News - Fuquay-Varina | Storms, Road Safety &amp; Community Updates/title>
+  property="og:title" content="Siska Skywarn Weather News - Fuquay-Varina | Storms, Road Safety &amp; Community Updates">
+  property="og:description" content="Your hyperlocal source for weather, storms, road safety, and community news in Fuquay-Varina and Midtown Rows. Fast, reliable, on the ground.">
+  property="og:type" content="website">
+  property="og:url" content="https://siskaskywarn.com/">
+  property="og:site_name" content="Siska Skywarn News">
+  meta name="twitter:card" content="summary_large_image">
+  meta name="twitter:title" content="Siska Skywarn Weather News - Fuquay-Varina">
+  meta name="twitter:description" content="Your hyperlocal source for weather, storms, road safety, and community news in Fuquay-Varina and Midtown Rows.">
+  style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #0a1628;
+  color: #e0e6ed;
+  line-height: 1.6;
+}
+a { color: #4fc3f7; text-decoration: none; }
+a:hover { text-decoration: underline; color: #81d4fa; }
+/* Utility Bar */
+.utility-bar {
+  background: #060e1a;
+  border-bottom: 1px solid #1a2d47;
+  padding: 8px 0;
+  font-size: 0.82rem;
+}
+.utility-bar .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  align-items: center;
+  justify-content: center;
+}
+.utility-bar a {
+  color: #90a4ae;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+.utility-bar a:hover { color: #4fc3f7; }
+.utility-bar .sep { color: #2a3f5f; user-select: none; }
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* Main Header / Nav */
+.main-header {
+  background: linear-gradient(135deg, #0d2137 0%, #132d4a 100%);
+  border-bottom: 2px solid #1a4a7a;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.brand {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+.brand span { color: #4fc3f7; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+}
+.nav-links a {
+  color: #b0bec5;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #ffffff; text-decoration: none; }
+.nav-cta {
+  background: #4fc3f7;
+  color: #0a1628 !important;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 700 !important;
+  font-size: 0.9rem;
+}
+.nav-cta:hover { background: #81d4fa; text-decoration: none !important; }
+/* Hero */
+.hero {
+  background: linear-gradient(180deg, #0d2137 0%, #0a1628 100%);
+  padding: 80px 20px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  max-width: 750px;
+  margin: 0 auto 20px;
+  line-height: 1.2;
+}
+.hero p {
+  font-size: 1.15rem;
+  color: #90a4ae;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+.hero-cta {
+  display: inline-block;
+  background: #4fc3f7;
+  color: #0a1628;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: background 0.2s;
+}
+.hero-cta:hover { background: #81d4fa; text-decoration: none; }
+/* Sections */
+.section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.section p {
+  color: #b0bec5;
+  max-width: 700px;
+  margin-bottom: 16px;
+}
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+.card {
+  background: #111d30;
+  border: 1px solid #1a2d47;
+  border-radius: 10px;
+  padding: 28px 24px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: #1a4a7a; }
+.card h3 {
+  font-size: 1.15rem;
+  color: #4fc3f7;
+  margin-bottom: 10px;
+}
+.card p { color: #90a4ae; font-size: 0.95rem; }
+/* Disclaimer */
+.disclaimer {
+  background: #0d1b2a;
+  border-top: 1px solid #1a2d47;
+  border-bottom: 1px solid #1a2d47;
+  padding: 40px 20px;
+  text-align: center;
+}
+.disclaimer p {
+  color: #78909c;
+  font-size: 0.9rem;
+  max-width: 650px;
+  margin: 0 auto;
+}
+/* CTA Banner */
+.cta-banner {
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  padding: 60px 20px;
+  text-align: center;
+}
+.cta-banner h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.cta-banner p {
+  color: #bbdefb;
+  margin-bottom: 24px;
+  font-size: 1.05rem;
+}
+.cta-banner a {
+  display: inline-block;
+  background: #ffffff;
+  color: #0d47a1;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.cta-banner a:hover { background: #e3f2fd; }
+/* Footer */
+footer {
+  background: #060e1a;
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid #1a2d47;
+}
+footer p { color: #546e7a; font-size: 0.85rem; }
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-links { gap: 14px; flex-wrap: wrap; }
+  .nav-container { flex-direction: column; gap: 12px; }
+  .hero { padding: 50px 16px; }
+  .section { padding: 40px 16px; }
+  .utility-bar .container { flex-direction: column; gap: 4px; }
+}
+@media (max-width: 480px) {
+  .nav-links { flex-direction: column; align-items: center; gap: 10px; }
+  .hero h1 { font-size: 1.6rem; }
+}
+  /style>
+/head>
+body>
+div class="utility-bar">
+  div class="container">
+    a href="https://www.facebook.com/share/g/1BQb3nSCnT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook/a>
+    span class="sep">|/span>
+    a href="https://www.tiktok.com/@siskaskywarn" target="_blank" rel="noopener">TikTok/a>
+    span class="sep">|/span>
+    a href="https://www.instagram.com/daniel.siska.nc?stkn=MXJtNmFxdmU1enI3dA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram/a>
+    span class="sep">|/span>
+    a href="https://www.linkedin.com/in/danieljsiska?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn/a>
+    span class="sep">|/span>
+    a href="https://www.facebook.com/share/g/1CHuuWgjVq/?mibextid=wwXIfr" target="_blank" rel="noopener">Moving to Fuquay/a>
+    span class="sep">|/span>
+    a href="https://www.google.com/maps/d/edit?mid=1JkATeJkc_GzhmLEXg6kNdqKh4n5Qn-I&usp=sharing" target="_blank" rel="noopener">Fuquay Map/a>
+    span class="sep">|/span>
+    a href="https://www.carusohomes.com/new-homes/nc/fuquay-varina/midtown-rows/17413/" target="_blank" rel="noopener">Midtown Rows/a>
+  /div>
+/div>
+header class="main-header">
+  div class="nav-container">
+    div class="brand">Siska Skywarn /span> News/div>
+    ul class="nav-links">
+      li a href="#weather">Weather/li>
+      li a href="#local-news">Local News/li>
+      li a href="#coverage">Coverage/li>
+      li a href="#about">About/li>
+      li a href="advertise.html" class="nav-cta">Advertise / Collaborate/li>
+    /ul>
+  /div>
+/header>
+section class="hero">
+  div class="container">
+    h1>Weather moves fast. Local information should too./h1>
+    p>Hyperlocal weather, road safety, and community news for Fuquay-Varina and beyond - delivered fast, right when you need it./p>
+    a href="#weather" class="hero-cta">Explore Latest Updates/a>
+  /div>
+/section>
+section class="section" id="weather">
+  div class="container">
+ h2>Weather &amp; Storms/h2>
+    p>Real-time storm tracking and severe weather alerts for Nash, Wake, and surrounding counties. When the sky turns, we're on it - lightning, tornado watches, flash floods, and everything in between./p>
+  /div>
+/section>
+section class="section" id="road-safety" style="background: #0d1b2a;">
+  div class="container">
+ h2>Road &amp; Safety Updates/h2>
+    p>Downed trees, flooded roads, lane closures, and emergency detours. We keep you posted on what's happening on the ground so you can plan your route and stay safe./p>
+  /div>
+/section>
+section class="section" id="local-news">
+  div class="container">
+    h2>Community News/h2>
+    p>From school board meetings to local business openings, neighborhood events to city council decisions - Siska Skywarn News covers the stories that shape our daily lives./p>
+  /div>
+/section>
+section class="section" id="coverage" style="background: #0d1b2a;">
+  div class="container">
+    h2>Hyperlocal Coverage/h2>
+    p>We zoom in where it matters: Fuquay-Varina, Midtown Rows, and the communities around them. This is news made by people who live here, report here, and care here./p>
+    div class="section-grid">
+      div class="card">
+        h3>/h3>
+        p>On-the-ground storm coverage and real-time weather updates you can trust./p>
+      /div>
+      div class="card">
+        h3>Community First/h3>
+        p>Stories that matter to our neighbors, our schools, and our local businesses./p>
+      /div>
+      div class="card">
+        h3>Rapid Response/h3>
+        p>Fast-breaking news when seconds count - floods, wrecks, and road closures./p>
+      /div>
+    /div>
+  /div>
+/section>
+section class="section" id="about" style="background: #0d1b2a;">
+  div class="container">
+    h2>About Siska Skywarn News/h2>
+    p>Siska Skywarn News is a hyperlocal digital news source dedicated to delivering fast, accurate weather and community information to the Fuquay-Varina area and beyond. We believe every neighborhood deserves a news source that's close to home, quick on its feet, and deeply invested in the stories that shape our daily lives./p>
+  /div>
+/section>
+div class="disclaimer">
+  div class="container">
+    p>Disclaimer: Siska Skywarn News is not an official emergency management agency. For life-threatening emergencies, call 911. For official weather warnings and alerts, follow the National Weather Service Raleigh at /p>
+    p style="margin-top: 10px;">
+      a href="https://www.weather.gov/rah/" target="_blank" rel="noopener">NWS Raleigh/NWRaleigh/a>
+    /p>
+  /div>
+/div>
+div class="cta-banner">
+  div class="container">
+    h2>Advertise or collaborate with Siska Skywarn News/h2>
+    p>Reach a highly engaged, hyperlocal audience in Fuquay-Varina and the surrounding communities./p>
+    a href="advertise.html">Learn More / Get in Touch/a>
+  /div>
+/div>
+footer>
+ p>&copy; 2026 Siska Skywarn News. All rights reserved. | Fuquay-Varina, North Carolina/footer>
+/footer>
+/body>
+/html>
